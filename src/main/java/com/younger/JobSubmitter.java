@@ -31,6 +31,7 @@ public class JobSubmitter {
 
         // 设置参数：maptask在做数据分区时，用哪个分区逻辑，如果不指定，使用默认的HashPartitioner
         job.setPartitionerClass(ProvincePartitioner.class);
+        // 由于Partitioner会产生六种结果，所以设置六种Reduce Task
         job.setNumReduceTasks(6);
 
         boolean b = job.waitForCompletion(true);
